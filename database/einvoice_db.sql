@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 02 Feb 2026 pada 07.16
--- Versi server: 8.0.30
--- Versi PHP: 8.3.30
+-- Generation Time: Feb 06, 2026 at 04:06 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Basis data: `einvoice_db`
+-- Database: `einvoice_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company_settings`
+-- Table structure for table `company_settings`
 --
 
 CREATE TABLE `company_settings` (
@@ -39,7 +39,7 @@ CREATE TABLE `company_settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `company_settings`
+-- Dumping data for table `company_settings`
 --
 
 INSERT INTO `company_settings` (`id`, `company_name`, `company_address`, `company_phone`, `company_email`, `company_logo`, `created_at`, `updated_at`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `company_settings` (`id`, `company_name`, `company_address`, `compan
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `customers`
+-- Table structure for table `customers`
 --
 
 CREATE TABLE `customers` (
@@ -63,7 +63,7 @@ CREATE TABLE `customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `customers`
+-- Dumping data for table `customers`
 --
 
 INSERT INTO `customers` (`id`, `customer_name`, `customer_address`, `customer_email`, `customer_phone`, `is_active`, `created_at`, `updated_at`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `customers` (`id`, `customer_name`, `customer_address`, `customer_em
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `invoices`
+-- Table structure for table `invoices`
 --
 
 CREATE TABLE `invoices` (
@@ -99,7 +99,7 @@ CREATE TABLE `invoices` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `invoices`
+-- Dumping data for table `invoices`
 --
 
 INSERT INTO `invoices` (`id`, `invoice_number`, `customer_id`, `invoice_date`, `due_date`, `status`, `notes`, `subtotal`, `tax_ppn`, `grand_total`, `created_by`, `created_at`, `updated_at`) VALUES
@@ -119,7 +119,7 @@ INSERT INTO `invoices` (`id`, `invoice_number`, `customer_id`, `invoice_date`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `invoice_counters`
+-- Table structure for table `invoice_counters`
 --
 
 CREATE TABLE `invoice_counters` (
@@ -129,7 +129,7 @@ CREATE TABLE `invoice_counters` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `invoice_counters`
+-- Dumping data for table `invoice_counters`
 --
 
 INSERT INTO `invoice_counters` (`id`, `year`, `last_number`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `invoice_counters` (`id`, `year`, `last_number`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `invoice_items`
+-- Table structure for table `invoice_items`
 --
 
 CREATE TABLE `invoice_items` (
@@ -153,7 +153,7 @@ CREATE TABLE `invoice_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `invoice_items`
+-- Dumping data for table `invoice_items`
 --
 
 INSERT INTO `invoice_items` (`id`, `invoice_id`, `item_description`, `quantity`, `unit`, `price`, `total_price`, `created_at`) VALUES
@@ -195,7 +195,7 @@ INSERT INTO `invoice_items` (`id`, `invoice_id`, `item_description`, `quantity`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -204,7 +204,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
@@ -214,7 +214,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -229,7 +229,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `full_name`, `username`, `password`, `role_id`, `is_active`, `created_at`, `updated_at`) VALUES
@@ -238,24 +238,24 @@ INSERT INTO `users` (`id`, `full_name`, `username`, `password`, `role_id`, `is_a
 (3, 'Kenneth Carl Tadeo', 'yue', '$2y$12$VY8LdONMCN/4RMsUerFbkOnK1vu0.7GK4wkNXgBkYtThRm7HYnP.S', 1, 1, '2026-01-27 01:36:00', NULL);
 
 --
--- Indeks untuk tabel yang dibuang
+-- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `company_settings`
+-- Indexes for table `company_settings`
 --
 ALTER TABLE `company_settings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `customers`
+-- Indexes for table `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_customer_name` (`customer_name`);
 
 --
--- Indeks untuk tabel `invoices`
+-- Indexes for table `invoices`
 --
 ALTER TABLE `invoices`
   ADD PRIMARY KEY (`id`),
@@ -266,28 +266,28 @@ ALTER TABLE `invoices`
   ADD KEY `idx_invoice_status` (`status`);
 
 --
--- Indeks untuk tabel `invoice_counters`
+-- Indexes for table `invoice_counters`
 --
 ALTER TABLE `invoice_counters`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `year` (`year`);
 
 --
--- Indeks untuk tabel `invoice_items`
+-- Indexes for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_items_invoice` (`invoice_id`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -295,70 +295,70 @@ ALTER TABLE `users`
   ADD KEY `fk_users_roles` (`role_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `company_settings`
+-- AUTO_INCREMENT for table `company_settings`
 --
 ALTER TABLE `company_settings`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `customers`
+-- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `invoices`
+-- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `invoice_counters`
+-- AUTO_INCREMENT for table `invoice_counters`
 --
 ALTER TABLE `invoice_counters`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `invoice_items`
+-- AUTO_INCREMENT for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `invoices`
+-- Constraints for table `invoices`
 --
 ALTER TABLE `invoices`
   ADD CONSTRAINT `fk_invoices_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`),
   ADD CONSTRAINT `fk_invoices_users` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `invoice_items`
+-- Constraints for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
   ADD CONSTRAINT `fk_items_invoice` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_roles` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
